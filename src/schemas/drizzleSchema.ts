@@ -8,7 +8,6 @@ const metadataStore = new WeakMap();
 // Decorator
 export function Column<T = ColumnTypes>(columnDef: T) {
   return <K extends object>(target: K, propertyKey: string) => {
-    console.log(`Defining metadata for ${propertyKey} on`, target);
     metadataStore.set(target, {
       ...(metadataStore.get(target) || {}),
       [propertyKey]: columnDef,
@@ -17,9 +16,12 @@ export function Column<T = ColumnTypes>(columnDef: T) {
 }
 
 // Transformer
-export function createDrizzleSchema<T extends object & { id: number }>(
+export function createDrizzleSchema<T extends object>(
   tableName: string,
   myClass: new () => T,
 ) {
-  return pgTable(tableName, metadataStore.get(myClass.prototype) || {});
+  const metadata =
+    (metadataStore.get(myClass.prototype) as Record<string, ColumnTypes>) || {};
+  metadataStore.delete(myClass.prototype);
+  return pgTable(tableName, metadata);
 }
