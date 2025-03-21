@@ -1,11 +1,8 @@
-import { Column,
-  // Entity
-} from '../schemas/drizzleSchema';
+import { Column } from '../schemas/drizzleSchema';
 import { integer, serial, varchar } from 'drizzle-orm/pg-core';
 import * as schema from '../schemas/schema';
 
 // Post Schema
-// @Entity('posts')
 export class Post {
   @Column(serial('id').primaryKey())
   id: number;
