@@ -1,0 +1,13 @@
+{
+  "linter": {
+    "rules": {
+      "suspicious": {
+        
+      },
+      "correctness": {
+        "noInvalidConstructorSuper": "off",
+        "noUnusedPrivateClassMembers": "off"
+      }
+    }
+  }
+}
