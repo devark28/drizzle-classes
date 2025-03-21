@@ -1,21 +1,28 @@
 import {
-  PgBigInt53BuilderInitial, PgBigInt64BuilderInitial, PgBigSerial53BuilderInitial, PgBigSerial64BuilderInitial,
+  PgBigInt53BuilderInitial,
+  PgBigInt64BuilderInitial,
+  PgBigSerial53BuilderInitial,
+  PgBigSerial64BuilderInitial,
   PgBooleanBuilderInitial,
   PgCharBuilderInitial,
   PgDateBuilderInitial,
   PgDateStringBuilderInitial,
-  PgDoublePrecisionBuilderInitial, PgEnumColumnBuilderInitial,
+  PgDoublePrecisionBuilderInitial,
+  PgEnumColumnBuilderInitial,
   PgIntegerBuilderInitial,
   PgJsonbBuilderInitial,
   PgJsonBuilderInitial,
   PgNumericBuilderInitial,
   PgRealBuilderInitial,
-  PgSerialBuilderInitial, PgSmallIntBuilderInitial, PgSmallSerialBuilderInitial,
+  PgSerialBuilderInitial,
+  PgSmallIntBuilderInitial,
+  PgSmallSerialBuilderInitial,
   PgTimeBuilderInitial,
-  PgTimestampBuilderInitial, PgTimestampStringBuilderInitial,
+  PgTimestampBuilderInitial,
+  PgTimestampStringBuilderInitial,
   PgUUIDBuilderInitial,
   PgVarcharBuilderInitial,
-} from 'drizzle-orm/pg-core/index';
+} from 'drizzle-orm/pg-core';
 
 export type ColumnTypes =
   | PgVarcharBuilderInitial<any, any, any>

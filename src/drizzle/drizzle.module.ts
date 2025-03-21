@@ -1,17 +1,15 @@
 // src/drizzle/drizzle.module.ts
 import { type DynamicModule, Module } from '@nestjs/common';
 import { drizzle, type NodePgDatabase } from 'drizzle-orm/node-postgres';
-import type { PgDatabase } from 'drizzle-orm/pg-core';
 import { Pool, type PoolConfig } from 'pg';
-import type { schemaType } from 'src/schemas/drizzleSchema';
+import * as schema from 'src/schemas/schema';
 
 interface DrizzleConfig {
   connection: PoolConfig;
-  schema: schemaType; // Tables and relations
+  schema: typeof schema; // Tables and relations
 }
 
 @Module({})
-// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 export class DrizzleModule {
   static forRoot(config: DrizzleConfig): DynamicModule {
     return {
@@ -21,7 +19,9 @@ export class DrizzleModule {
           provide: 'DRIZZLE_DB',
           useFactory: () => {
             const pool = new Pool(config.connection);
-            return drizzle(pool, { schema: config.schema });
+            return drizzle(pool, { schema: config.schema }) as NodePgDatabase<
+              typeof schema
+            >;
           },
         },
       ],

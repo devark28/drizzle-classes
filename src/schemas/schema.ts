@@ -1,10 +1,14 @@
-import { createDrizzleSchema, Post, User } from './schemas';
+import { createDrizzleSchema } from './drizzleSchema';
 import { relations } from 'drizzle-orm';
+import { User } from '../user/user.entity';
+import { Post } from '../post/post.entity';
 
 export const users = createDrizzleSchema('users', User);
-console.log('----->', users);
+// export const users = User.getTable();
+// console.log('----->', users);
 
 export const posts = createDrizzleSchema('posts', Post);
+// export const posts = Post.getTable();
 
 // Relations
 export const userRelations = relations(users, ({ many }) => ({

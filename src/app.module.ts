@@ -1,7 +1,7 @@
 // src/app.module.ts
 import { Module } from '@nestjs/common';
 import { DrizzleModule } from './drizzle/drizzle.module';
-import { schema } from './schemas/drizzleSchema';
+import * as schema from './schemas/schema';
 import { UserModule } from './user/user.module';
 import { PostModule } from './post/post.module';
 
@@ -13,8 +13,8 @@ import { PostModule } from './post/post.module';
       },
       schema,
     }),
-    // UserModule,
-    // PostModule,
+    UserModule,
+    PostModule,
   ],
 })
 export class AppModule {}
