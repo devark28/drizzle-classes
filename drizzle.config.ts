@@ -10,6 +10,7 @@ export default defineConfig({
     user: 'postgres',
     password: 'password',
     database: 'mydb',
+    ssl: { rejectUnauthorized: false },
   },
-  out: './drizzle',
+  out: './migrations',
 });
