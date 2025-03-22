@@ -1,4 +1,4 @@
-import { getColumns } from './drizzle-column.utils';
+import { getColumns } from '../drizzle/drizzle-column.utils';
 import { relations } from 'drizzle-orm';
 import { User } from '../user/user.entity';
 import { Post } from '../post/post.entity';
