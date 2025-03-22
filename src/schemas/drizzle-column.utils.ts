@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { ColumnTypes } from './drizzleSchema.types';
+import { ColumnTypes } from './drizzle-column.types';
 
 const metadataStore = new WeakMap();
 

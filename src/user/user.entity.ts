@@ -1,4 +1,4 @@
-import { Column } from '../schemas/drizzleSchema';
+import { Column } from '../schemas/drizzle-column.utils';
 import { serial, varchar } from 'drizzle-orm/pg-core';
 
 // User Schema
