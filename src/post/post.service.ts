@@ -1,4 +1,3 @@
-// src/post/post.service.ts
 import { Inject, Injectable } from '@nestjs/common';
 import * as schema from '../schemas/schema';
 import { eq } from 'drizzle-orm';

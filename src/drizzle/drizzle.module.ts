@@ -1,4 +1,3 @@
-// src/drizzle/drizzle.module.ts
 import { type DynamicModule, Module } from '@nestjs/common';
 import { drizzle, type NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { Pool, type PoolConfig } from 'pg';

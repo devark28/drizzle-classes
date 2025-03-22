@@ -1,4 +1,3 @@
-// src/app.module.ts
 import { Module } from '@nestjs/common';
 import { DrizzleModule } from './drizzle/drizzle.module';
 import * as schema from './schemas/schema';

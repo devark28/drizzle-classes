@@ -1,6 +1,4 @@
-// src/schemas/drizzleSchema.ts
 import 'reflect-metadata';
-import { pgTable } from 'drizzle-orm/pg-core';
 import { ColumnTypes } from './drizzleSchema.types';
 
 const metadataStore = new WeakMap();
@@ -16,12 +14,12 @@ export function Column<T = ColumnTypes>(columnDef: T) {
 }
 
 // Transformer
-export function createDrizzleSchema<T extends object>(
-  tableName: string,
-  myClass: new () => T,
-) {
+export function getColumns(myClass: new () => any) {
   const metadata =
-    (metadataStore.get(myClass.prototype) as Record<string, ColumnTypes>) || {};
-  metadataStore.delete(myClass.prototype);
-  return pgTable(tableName, metadata);
+    (metadataStore.get(myClass.prototype as object) as Record<
+      string,
+      ColumnTypes
+    >) || {};
+  metadataStore.delete(myClass.prototype as object);
+  return metadata;
 }
