@@ -1,5 +1,5 @@
 import { Column } from '../schemas/drizzle-column.utils';
-import { serial, varchar } from 'drizzle-orm/pg-core';
+import { varchar } from 'drizzle-orm/pg-core';
 import { BaseEntity } from '../base.entity';
 
 // User Schema
