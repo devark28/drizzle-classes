@@ -1,12 +1,10 @@
 import { Column } from '../schemas/drizzle-column.utils';
 import { integer, serial, varchar } from 'drizzle-orm/pg-core';
 import * as schema from '../schemas/schema';
+import { BaseEntity } from '../base.entity';
 
 // Post Schema
-export class Post {
-  @Column(serial('id').primaryKey())
-  id: number;
-
+export class Post extends BaseEntity {
   @Column(varchar('title', { length: 256 }))
   title: string;
 

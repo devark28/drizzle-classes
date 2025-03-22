@@ -1,11 +1,9 @@
 import { Column } from '../schemas/drizzle-column.utils';
 import { serial, varchar } from 'drizzle-orm/pg-core';
+import { BaseEntity } from '../base.entity';
 
 // User Schema
-export class User {
-  @Column(serial('id').primaryKey())
-  id: number;
-
+export class User extends BaseEntity {
   @Column(varchar('first_name', { length: 256 }))
   firstName: string;
 

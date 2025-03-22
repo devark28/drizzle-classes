@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { ColumnTypes } from './drizzle-column.types';
 
 const metadataStore = new WeakMap();
+const MAX_PROTOTYPE_CHAIN_DEPTH = 3;
 
 // Decorator
 export function Column<T = ColumnTypes>(columnDef: T) {
@@ -15,11 +16,18 @@ export function Column<T = ColumnTypes>(columnDef: T) {
 
 // Transformer
 export function getColumns(myClass: new () => any) {
-  const metadata =
-    (metadataStore.get(myClass.prototype as object) as Record<
-      string,
-      ColumnTypes
-    >) || {};
-  metadataStore.delete(myClass.prototype as object);
-  return metadata;
+  let columns = {} as Record<string, ColumnTypes>;
+  let currentPrototype = myClass.prototype as object;
+  for (let i = 0; i < MAX_PROTOTYPE_CHAIN_DEPTH; i++) {
+    const metadata =
+      (metadataStore.get(currentPrototype) as Record<string, ColumnTypes>) ||
+      {};
+    columns = { ...columns, ...metadata };
+    if (currentPrototype) {
+      currentPrototype = Object.getPrototypeOf(currentPrototype) as object;
+    } else {
+      break;
+    }
+  }
+  return columns;
 }
